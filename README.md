@@ -24,3 +24,8 @@ This approach generates images where the black pixels are more likely to be clus
 **Dye Sensor Image**:
 - We used sparse representation for dye sensor image. For this, we randomly set a pixel value as 1 (lit) while ensuring the sparsity of the lit pixels.
 - We then store the coordinates of lit pixels in a list.
+
+### Question 3. Cancer Detection
+**Note**: For a simple scenario, It is assumed that the position of the parasite body in the dye sensor image is same as that in the microscopic image.
+- We first decode the microscope image from the RLE data to check that whether the lit pixel is within the parasite body or outside.
+- We find the fraction of lit area within the parasite body and check whether it exceeds the threshold of 10%. If it does, we return true, false otherwise.
