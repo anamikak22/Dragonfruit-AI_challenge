@@ -1,5 +1,5 @@
 # Dragonfruit-AI_assignment
-### <u>Question 1. Efficient Data Structure to store the images</u>
+### Question 1. Efficient Data Structure to store the images
 **Microscopic Image**:
 - As the parasite body is known to be a blob like structure of arbitrary shape which wil be a continuous region of black pixels, it will be most efficient to use ***Run-Length-Encoding (RLE)*** for the microscopic image.
 - RLE encodes the image as the starting posiion of the pixel and its run-length. However, to ***optimise*** more in terms of space, we only encode black pixels as encoding both white and black pixels would take unnecessary space.
@@ -25,7 +25,17 @@ This approach generates images where the black pixels are more likely to be clus
 - We used sparse representation for dye sensor image. For this, we randomly set a pixel value as 1 (lit) while ensuring the sparsity of the lit pixels.
 - We then store the coordinates of lit pixels in a list.
 
-### Question 3. Cancer Detection
+### Question 3 & 4. Cancer Detection with optimised runtime
 **Note**: For a simple scenario, It is assumed that the position of the parasite body in the dye sensor image is same as that in the microscopic image.
 - We first decode the microscope image from the RLE data to check that whether the lit pixel is within the parasite body or outside.
 - We find the fraction of lit area within the parasite body and check whether it exceeds the threshold of 10%. If it does, we return true, false otherwise.
+- For optimising the runtime, we might vectorise the things which would eliminate the for loops and therefore, reduce the runtime.
+
+### Question 5. Alternative Data Structures for Image Compression
+- Run-Length Encoding (RLE): (Already implemented) Works well for binary images with large areas of the same value (e.g., parasite background) but might not be the most efficient for complex shapes like the parasite itself. Runtime is generally fast for encoding and decoding.
+- LZ77/LZMA: These dictionary-based techniques can achieve better compression than RLE, especially for redundant patterns within the parasite shape. However, they have higher computational complexity, leading to slower runtime compared to RLE.
+- Binary Arithmetic Coding: Achieves near-optimal compression but is computationally expensive for both encoding and decoding. Runtime will be slower than RLE and LZMA.
+- Quadtrees: Indexing based quad trees can be used for faster information retrieval. However, it will not be as storage efficient as RLE and sparse matrix in our case.
+
+### Question 6. Tools used
+- I used Gemini and ChatGPT for writing the code for me to save the time, as time was a constraint in this challenge. However, I modified the codes as per my approach and requirements.
